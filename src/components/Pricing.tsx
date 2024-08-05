@@ -8,7 +8,7 @@ import { CheckIcon } from 'lucide-react'
 
 const Pricing = () => {
     return (
-        <section className='mt-[30px]'>
+        <section id="pricing" className='mt-[30px]'>
             <h2 className='text-6xl text-center mt-[40px] text-white font-bold'>
                 <span className='text-cyan-500'>Pricing</span> Plans
             </h2>

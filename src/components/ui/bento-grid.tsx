@@ -13,7 +13,7 @@ import Image from "next/image";
 
 export function BentoGridDemo() {
   return (
-    <div className="w-full px-4">
+    <div id="blogs" className="w-full px-4">
       <div className="mb-6">
         <h2 className="text-6xl text-center text-white font-bold">
           <span className="text-cyan-500">Latest</span> Blogs

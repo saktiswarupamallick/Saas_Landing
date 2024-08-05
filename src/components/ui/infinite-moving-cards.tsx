@@ -14,7 +14,7 @@ const companyLogos = [
 
 export function InfiniteMovingCardsDemo() {
   return (
-    <div className="h-[40rem] rounded-md flex flex-col antialiased mt-40 dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
+    <div id="clients" className="h-[40rem] rounded-md flex flex-col antialiased mt-40 dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
       <div className="mb-6">
         <h2 className="text-6xl text-center text-white font-bold">
           What Our <span className="text-cyan-500">Clients</span> Say
