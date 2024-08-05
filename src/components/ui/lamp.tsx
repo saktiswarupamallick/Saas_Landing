@@ -3,11 +3,13 @@ import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/utils/cn";
 import { SparklesCore } from "./sparkles"
-
+import Image from "next/image";
+import Link from "next/link";
 
 export function LampDemo() {
   return (
     <LampContainer className="pt-36">
+     
       <motion.h1
         initial={{ opacity: 0.5, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -123,14 +125,14 @@ export const LampContainer = ({
         ></motion.div>
 
         <div className="w-[40rem] h-40 relative">
-        <SparklesCore
-          background="transparent"
-          minSize={0.4}
-          maxSize={1}
-          particleDensity={1200}
-          className="w-full h-full"
-          particleColor="#FFFFFF"
-        />
+          <SparklesCore
+            background="transparent"
+            minSize={0.4}
+            maxSize={1}
+            particleDensity={1200}
+            className="w-full h-full"
+            particleColor="#FFFFFF"
+          />
 
         </div>
 

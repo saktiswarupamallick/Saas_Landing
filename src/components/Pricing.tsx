@@ -12,7 +12,7 @@ const Pricing = () => {
             <h2 className='text-6xl text-center mt-[40px] text-white font-bold'>
                 <span className='text-cyan-500'>Pricing</span> Plans
             </h2>
-            <div className='flex flex-wrap items-center justify-center flex-col md:flex-row gap-8 mt-[100px]'>
+            <div className='flex flex-wrap items-center justify-center flex-col md:flex-row gap-2 mt-[100px]'>
                 <CardContainer className="inter-var ">
                     <CardBody className=" relative group/card  hover:shadow-neutral-500/[0.1] bg-black  w-full md:!w-[350px] h-auto rounded-xl p-6 ">
                         <CardItem translateZ='50' className='text-xl font-bold text-cyan-500 '>Basic
@@ -58,7 +58,7 @@ const Pricing = () => {
                     </CardBody>
                 </CardContainer>
                 <CardContainer className="inter-var ">
-                    <CardBody className=" relative group/card  dark:hover:shadow-2xl hover:shadow-neutral-500/[0.1] bg-black border-white/[0.5]  w-full md:!w-[350px] h-auto rounded-xl p-6 border">
+                    <CardBody className=" relative group/card  dark:hover:shadow-2xl hover:shadow-neutral-500/[0.1] bg-black border-white/[0.5]  w-full md:!w-[350px] h-[440px] rounded-xl p-6 border">
                         <CardItem
                             translateZ="50"
                             className="text-xl font-bold text-cyan-500 dark:text-white "
