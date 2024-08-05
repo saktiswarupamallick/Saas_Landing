@@ -1,16 +1,16 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { cn } from "@/utils/cn";
-
+import Image from "next/image";
 
 const companyLogos = [
-  "/pic8.png",
-  "/pic9.png",
-  "/pic10.png",
-  "/pic11.png",
-  "/pic10.png"
-]
+  { src: "/pic8.png", width: 100, height: 100 },
+  { src: "/pic9.png", width: 100, height: 100 },
+  { src: "/pic10.png", width: 100, height: 100 },
+  { src: "/pic11.png", width: 100, height: 100 },
+  { src: "/pic10.png", width: 100, height: 100 },
+];
 
 export function InfiniteMovingCardsDemo() {
   return (
@@ -23,9 +23,9 @@ export function InfiniteMovingCardsDemo() {
           Discover how our <span className="text-cyan-500">solutions</span> have transformed their businesses.
         </p>
       </div>
-      <div className="flex flex-wrap justify-center gap-10 mb-20 ">
-        {companyLogos.map((logo , index) =>(
-          <img key={index} src={logo} alt={`company Logos ${index + 1}`} className="h-14 md:h-22" />
+      <div className="flex flex-wrap justify-center gap-10 mb-20">
+        {companyLogos.map((logo, index) => (
+          <Image key={index} src={logo.src} alt={`company Logos ${index + 1}`} className="h-14 md:h-22" width={logo.width} height={logo.height} />
         ))}
       </div>
 
@@ -97,13 +97,9 @@ export const InfiniteMovingCards = ({
   const containerRef = React.useRef<HTMLDivElement>(null);
   const scrollerRef = React.useRef<HTMLUListElement>(null);
 
-  useEffect(() => {
-    addAnimation();
-  }, []);
-
   const [start, setStart] = useState(false);
 
-  function addAnimation() {
+  const addAnimation = useCallback(() => {
     if (containerRef.current && scrollerRef.current) {
       const scrollerContent = Array.from(scrollerRef.current.children);
 
@@ -118,9 +114,9 @@ export const InfiniteMovingCards = ({
       getSpeed();
       setStart(true);
     }
-  }
+  }, [direction, speed]);
 
-  const getDirection = () => {
+  const getDirection = useCallback(() => {
     if (containerRef.current) {
       if (direction === "left") {
         containerRef.current.style.setProperty(
@@ -134,9 +130,9 @@ export const InfiniteMovingCards = ({
         );
       }
     }
-  };
+  }, [direction]);
 
-  const getSpeed = () => {
+  const getSpeed = useCallback(() => {
     if (containerRef.current) {
       if (speed === "fast") {
         containerRef.current.style.setProperty("--animation-duration", "20s");
@@ -146,7 +142,11 @@ export const InfiniteMovingCards = ({
         containerRef.current.style.setProperty("--animation-duration", "80s");
       }
     }
-  };
+  }, [speed]);
+
+  useEffect(() => {
+    addAnimation();
+  }, [addAnimation]);
 
   return (
     <div
@@ -160,7 +160,7 @@ export const InfiniteMovingCards = ({
         ref={scrollerRef}
         className={cn(
           "flex min-w-full shrink-0 gap-16 py-4 w-max flex-nowrap",
-          start && "animate-scroll ",
+          start && "animate-scroll",
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
       >
@@ -184,10 +184,12 @@ export const InfiniteMovingCards = ({
               </span>
               <div className="relative z-20 mt-6 flex flex-row items-center">
                 <div className="me-3">
-                  <img
+                  <Image
                     src={item.image}
                     alt={`${item.name} profile`}
                     className="w-12 h-12 rounded-full"
+                    width={48}
+                    height={48}
                   />
                 </div>
                 <span className="flex flex-col gap-1">
